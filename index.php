@@ -1,0 +1,17 @@
+<?php
+
+require_once("vendor/autoload.php");
+
+$app = new \Slim\Slim();
+
+$app->get('/', function(){
+    $sql = new Hcode\DB\sql();
+
+    $results = $sql-> select("SELECT * FROM tb_users");
+
+    echo json_encode($results);
+});
+
+$app->run();
+
+?>
